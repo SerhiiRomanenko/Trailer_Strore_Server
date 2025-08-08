@@ -33,11 +33,11 @@ const componentSchema = new mongoose.Schema({
 
 componentSchema.pre('save', function (next) {
     if (this.isModified('name') || !this.slug) {
-        this.slug = this.name
-            .toLowerCase()
-            .replace(/[^a-z0-9\s-]/g, '')
-            .replace(/\s+/g, '-')
-            .replace(/-+/g, '-');
+        // Використовуємо transliterate для коректної обробки кирилиці
+        this.slug = transliterate(this.name, {
+            lower: true,
+            separator: '-'
+        });
     }
     this.updatedAt = Date.now();
     next();
