@@ -1,5 +1,5 @@
-// models/Component.js
 const mongoose = require("mongoose");
+const transliterate = require('transliteration').slugify;
 
 const specificationSchema = new mongoose.Schema({
     name: {type: String, required: true},
