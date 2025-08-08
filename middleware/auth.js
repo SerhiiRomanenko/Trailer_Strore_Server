@@ -1,7 +1,7 @@
 // middleware/auth.js
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = process.env.JWT_SECRET || "b6540b7d87f7a7836e52c8c6913e174b0c79e6051f6d3a82631526487e457d9d";
+const JWT_SECRET = process.env.JWT_SECRET || "supersecretjwtkey";
 
 exports.protect = (req, res, next) => {
     let token;
