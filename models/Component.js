@@ -33,7 +33,6 @@ const componentSchema = new mongoose.Schema({
 
 componentSchema.pre('save', function (next) {
     if (this.isModified('name') || !this.slug) {
-        // Використовуємо transliterate для коректної обробки кирилиці
         this.slug = transliterate(this.name, {
             lower: true,
             separator: '-'
